@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Someone Special ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#0f0f0f;
+color:white;
+overflow-x:hidden;
+}
+
+.password-screen{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff4d88,#7b2cbf);
+}
+
+.password-screen h1{
+margin-bottom:20px;
+}
+
+input{
+padding:12px;
+border:none;
+border-radius:10px;
+font-size:18px;
+}
+
+button{
+margin-top:15px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+}
+
+.hidden{
+display:none;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:1.2rem;
+opacity:.8;
+}
+
+.gallery{
+padding:50px 20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,.15);
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.message{
+padding:60px 20px;
+max-width:900px;
+margin:auto;
+line-height:1.8;
+font-size:1.1rem;
+white-space:pre-line;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+animation:float 8s linear infinite;
+pointer-events:none;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="password-screen" id="lock">
+<h1>💗 Enter Password 💗</h1>
+<input type="password" id="pwd">
+<button onclick="unlock()">Unlock</button>
+</div>
+
+<div id="site" class="hidden">
+
+<section class="hero">
+<h1>For My Favorite Person 💗</h1>
+<p>Every memory with you is special.</p>
+
+<button onclick="toggleMusic()">🎵 Play Music</button>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+</section>
+
+<section class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+</section>
+
+<section class="message" id="message"></section>
+
+</div>
+
+<script>
+
+function unlock(){
+let password=document.getElementById("pwd").value;
+
+if(password==="0122"){
+document.getElementById("lock").style.display="none";
+document.getElementById("site").classList.remove("hidden");
+startTyping();
+}
+else{
+alert("Wrong password 💔");
+}
+}
+
+function toggleMusic(){
+document.getElementById("music").play();
+}
+
+const text=`Hey idiot 💗
+
+I know it’s “just a fever,” but I still hate knowing that you’re not feeling well. Maybe it’s because you’ve become such an important part of my life that seeing you sick automatically makes me worry.
+
+You know, out of everyone I talk to, you’re genuinely the person I look forward to hearing from the most. No matter how my day is going, seeing your message somehow makes everything a little better.
+
+I don’t think you realize how much I appreciate you. You’re such a comforting, kind, and special person, and I’m really grateful that I get to call you my best friend.
+
+So for now, stop trying to be strong and just rest. Drink water, take your medicines, sleep properly, and let your body recover.
+
+And just in case nobody has reminded you today — you are loved, you are appreciated, and you mean a lot more to people than you probably realize. Especially to me.
+
+Now get well soon, dummy.
+
+Take care, okay? 💗🫶🏻`;
+
+let i=0;
+
+function startTyping(){
+const target=document.getElementById("message");
+
+function type(){
+if(i<text.length){
+target.innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,20);
+}
+}
+type();
+}
+
+function createHeart(){
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💗";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+}
+
+setInterval(createHeart,400);
+
+</script>
+
+</body>
+</html>
