@@ -91,14 +91,12 @@ transform:scale(1.05);
 }
 
 .message{
-display:none;
 padding:60px 20px;
 max-width:900px;
 margin:auto;
 line-height:1.8;
 font-size:1.1rem;
 white-space:pre-line;
-text-align:center;
 }
 
 .heart{
@@ -125,49 +123,12 @@ opacity:0;
 <body>
 
 <div class="password-screen" id="lock">
-
-<h1>💗 A Small Surprise 💗</h1>
-
+<h1>💗 Enter Password 💗</h1>
 <input type="password" id="pwd">
-
-<button onclick="unlock()">
-Open Letter 💌
-</button>
-
-</div>
-
-<div id="envelope1" class="hidden hero">
-<h1>💌</h1>
-<p>Do you want to open it?</p>
-<button onclick="testOpen()">Open</button>
-</div>
-
-<div id="envelope2" class="hero" style="display:none;">
-<h1>💌</h1>
-<p>Are you sure?</p>
-<button onclick="openEnvelope2()">I'm Sure ❤️</button>
+<button onclick="unlock()">Unlock</button>
 </div>
 
 <div id="site" class="hidden">
-
-<section class="hero" id="photoPage">
-
-<img id="storyPhoto"
-src="photo1.jpg"
-style="
-width:300px;
-max-width:90%;
-border-radius:20px;
-box-shadow:0 0 20px white;
-">
-
-<br>
-
-<button onclick="nextPhoto()">
-Continue ❤️
-</button>
-
-</section>
 
 <section class="hero">
 <h1>For My Favorite Person 💗</h1>
@@ -180,26 +141,11 @@ Continue ❤️
 </audio>
 </section>
 
-<section
-id="videoSection"
-class="hero hidden">
-
-<video
-width="90%"
-controls>
-
-<source
-src="video.mp4"
-type="video/mp4">
-
-</video>
-
-<br>
-
-<button onclick="showMessage()">
-Continue ❤️
-</button>
-
+<section class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
 </section>
 
 <section class="message" id="message"></section>
@@ -209,95 +155,22 @@ Continue ❤️
 <script>
 
 function unlock(){
-
-let password=
-document.getElementById("pwd").value;
+let password=document.getElementById("pwd").value;
 
 if(password==="0122"){
-
 document.getElementById("lock").style.display="none";
-
-document.getElementById("envelope1")
-.classList.remove("hidden");
-
-}else{
-
+document.getElementById("site").classList.remove("hidden");
+startTyping();
+}
+else{
 alert("Wrong password 💔");
-
+}
 }
 
-}
-function testOpen(){
-
-alert("Button works!");
-
-openEnvelope1();
-
-}
-function openEnvelope1(){
-
-alert("Opening second envelope");
-
-document.getElementById("envelope1").style.display="none";
-
-document.getElementById("envelope2").style.display="flex";
-
-}
-
-function openEnvelope2(){
-
-document.getElementById("envelope2")
-.classList.add("hidden");
-
-document.getElementById("site")
-.classList.remove("hidden");
-
-}
 function toggleMusic(){
 document.getElementById("music").play();
 }
-let photos=[
-"photo1.jpg",
-"photo2.jpg",
-"photo3.jpg",
-"photo4.jpg"
-];
 
-let currentPhoto=0;
-
-function nextPhoto(){
-
-currentPhoto++;
-
-if(currentPhoto<photos.length){
-
-document.getElementById("storyPhoto")
-.src=photos[currentPhoto];
-
-}
-else{
-
-document.getElementById("photoPage")
-.classList.add("hidden");
-
-document.getElementById("videoSection")
-.classList.remove("hidden");
-
-}
-
-}
-
-function showMessage(){
-
-document.getElementById("videoSection")
-.classList.add("hidden");
-
-document.getElementById("message")
-.style.display="block";
-
-startTyping();
-
-}
 const text=`Hey idiot 💗
 
 I know it’s “just a fever,” but I still hate knowing that you’re not feeling well. Maybe it’s because you’ve become such an important part of my life that seeing you sick automatically makes me worry.
