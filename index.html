@@ -139,10 +139,10 @@ Open Letter 💌
 <div id="envelope1" class="hidden hero">
 <h1>💌</h1>
 <p>Do you want to open it?</p>
-<button onclick="openEnvelope1()">Open</button>
+<button onclick="testOpen()">Open</button>
 </div>
 
-<div id="envelope2" class="hidden hero">
+<div id="envelope2" class="hero" style="display:none;">
 <h1>💌</h1>
 <p>Are you sure?</p>
 <button onclick="openEnvelope2()">I'm Sure ❤️</button>
@@ -227,13 +227,20 @@ alert("Wrong password 💔");
 }
 
 }
+function testOpen(){
+
+alert("Button works!");
+
+openEnvelope1();
+
+}
 function openEnvelope1(){
 
-document.getElementById("envelope1")
-.classList.add("hidden");
+alert("Opening second envelope");
 
-document.getElementById("envelope2")
-.classList.remove("hidden");
+document.getElementById("envelope1").style.display="none";
+
+document.getElementById("envelope2").style.display="flex";
 
 }
 
